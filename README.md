@@ -1,2 +1,2 @@
 # WebService-SOAP
-Servicios web SOAP que  consulta información  de la base de datos ORACLE
+WenService SOAP que  consulta información  de la base de datos ORACLE
