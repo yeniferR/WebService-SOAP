@@ -39,21 +39,18 @@ namespace WebServiceProject
 		[WebMethod]
 		public DataSet GetData()
 		{
-			//OracleConnection conn = new OracleConnection("Data Source=dblinux;User Id=siggas;Password=siggaslinux;");
-
 			
 			string connStr = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
-			//conn.ConnectionString = "Data Source=xe;User Id=system;Password=manage;";
 			OracleConnection conn = new OracleConnection(connStr);
+
+			conn.Open();
 			OracleDataAdapter cmd = new OracleDataAdapter("SELECT * FROM EQUIPOS",conn);
 			
-
-				//conn.Open();
-				//cmd.Connection = conn;
-				DataSet ds = new DataSet();
-				ds.Tables.Add("EQUIPOS");
-				cmd.Fill(ds, "EQUIPOS"); // llenamos el dataset
-										 //	DataTable tt = ds.Tables[0];
+			conn.Close();
+			DataSet ds = new DataSet();
+			ds.Tables.Add("EQUIPOS");
+			cmd.Fill(ds, "EQUIPOS"); // llenamos el dataset
+			//	DataTable tt = ds.Tables[0];
 				return ds;
 			
 		}
